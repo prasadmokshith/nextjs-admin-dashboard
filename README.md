@@ -7,8 +7,7 @@ This project demonstrates real-world frontend concepts like authentication, data
 
 ## 🔗 Live Demo
 
-👉 (Add after Vercel deploy)
-https://your-vercel-link.vercel.app
+https://nextjs-admin-dashboard-brown-pi.vercel.app/dashboard
 
 ---
 
@@ -57,7 +56,7 @@ app/
 ## ⚙️ Getting Started
 
 1. Clone the repo
-   git clone https://github.com/your-username/nextjs-admin-dashboard.git
+   git clone https://github.com/prasadmokshith/nextjs-admin-dashboard.git
    cd nextjs-admin-dashboard
 
 2. Install dependencies
@@ -122,7 +121,7 @@ Steps:
 
 Prasad S
 
-GitHub: https://github.com/your-username
+GitHub: https://github.com/prasadmokshith
 LinkedIn: (Add your profile)
 
 ---
