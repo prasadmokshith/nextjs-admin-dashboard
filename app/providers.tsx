@@ -1,12 +1,10 @@
 "use client";
 
 import { ThemeProvider, createTheme } from "@mui/material/styles";
-import { createContext, useMemo, useState } from "react";
+import { createContext, useMemo, useState, useEffect } from "react";
 import CssBaseline from "@mui/material/CssBaseline";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-// OPTIONAL (good for debugging)
-//import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 export const ColorModeContext = createContext({
   toggleTheme: () => {},
@@ -16,10 +14,15 @@ export const ColorModeContext = createContext({
 export default function Providers({ children }: { children: React.ReactNode }) {
   const [mode, setMode] = useState<"light" | "dark">("light");
 
-  // ✅ React Query Client (IMPORTANT)
   const [queryClient] = useState(() => new QueryClient());
+  useEffect(() => {
+    if (mode === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [mode]);
 
-  // ✅ Theme
   const theme = useMemo(
     () =>
       createTheme({

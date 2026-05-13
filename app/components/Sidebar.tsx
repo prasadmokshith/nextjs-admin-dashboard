@@ -31,6 +31,12 @@ export default function Sidebar() {
           </ListItemButton>
         </ListItem>
 
+        <ListItem disablePadding>
+          <ListItemButton onClick={() => router.push("/dashboard/ai-insights")}>
+            <ListItemText primary="AI Insights" />
+          </ListItemButton>
+        </ListItem>
+
         {/* Admin Only */}
         {role === "admin" && (
           <ListItem disablePadding>

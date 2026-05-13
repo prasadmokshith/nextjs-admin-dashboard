@@ -1,131 +1,349 @@
 # Next.js Admin Dashboard
 
-A modern **Admin Dashboard** built using **Next.js (App Router)**, **React Query**, and **Material UI**.
-This project demonstrates real-world frontend concepts like authentication, data fetching, validation, and UI design.
+A modern **Admin Dashboard** built using **Next.js App Router**, **React Query**, **Material UI**, and **AI-powered UI generation with Vercel v0 + shadcn/ui**.
+
+This project demonstrates real-world frontend engineering concepts including:
+
+- Authentication & Authorization
+- AI-generated UI integration
+- Data Fetching & State Management
+- Reusable Component Architecture
+- Dark Theme Support
+- Responsive Dashboard Design
+- Charts & Analytics Visualization
 
 ---
 
-## 🔗 Live Demo
+# 🔗 Live Demo
 
 https://nextjs-admin-dashboard-brown-pi.vercel.app/dashboard
 
 ---
 
-## 📸 Features
+# 📸 Features
 
-- 🔐 Authentication (Role-based: Admin / User)
-- 📊 Dashboard UI with sidebar navigation
-- 👥 Users Management (View + Add Users)
-- ✅ Form Validation using Zod
-- ⚡ Data Fetching with React Query
-- 🎨 UI built with Material UI (MUI)
-- 🚀 Fully responsive design
-- 🌐 API integration (JSONPlaceholder)
+## 🔐 Authentication & Authorization
+
+Role-based login implemented using cookies.
+
+Authorization is managed based on user roles stored in browser cookies.
+
+### Admin Access
+
+- Email: `admin@gmail.com`
+- Access to:
+  - Dashboard
+  - Users Management
+  - AI Insights Dashboard
+
+### User Access
+
+- Email: `user@gmail.com`
+- Restricted access to admin-only pages
 
 ---
 
-## 🛠️ Tech Stack
+## 📊 Dashboard Features
+
+- Modern Admin Dashboard UI
+- Sidebar Navigation
+- Responsive Layout
+- Dark / Light Theme Toggle
+- Analytics Charts using Recharts
+- Real-time Dashboard Metrics
+
+---
+
+## 👥 Users Management
+
+- View Users
+- Add Users
+- Search Users
+- Debounced Search Optimization
+- Pagination
+- User Details Modal
+- Form Validation using Zod
+
+---
+
+## 🤖 AI Insights Dashboard (v0 Integration)
+
+Integrated an AI-generated analytics dashboard using:
+
+- Vercel v0
+- shadcn/ui
+- Tailwind CSS
+
+This module demonstrates incremental AI-assisted UI adoption within an existing enterprise-style MUI application.
+
+### Highlights
+
+- AI-generated reusable components
+- Interactive charts & analytics
+- Activity feed
+- KPI cards
+- Performance metrics
+- Modern SaaS-style UI
+- Integrated into existing MUI application architecture
+- Dark theme synchronization between MUI and Tailwind/shadcn
+- Reusable AI-generated dashboard widgets
+
+### AI Components Used
+
+- `StatsCard`
+- `ChartCard`
+- `ActivityFeed`
+- shadcn `Button`
+
+---
+
+# ⚡ Tech Stack
+
+## Frontend
 
 - Next.js (App Router)
+- React
 - TypeScript
+
+## UI & Styling
+
 - Material UI (MUI)
+- Tailwind CSS
+- shadcn/ui
+- Lucide React Icons
+
+## State & Data Management
+
 - React Query (TanStack Query)
+
+## Validation
+
 - Zod
+
+## Charts & Visualization
+
+- Recharts
+
+## API
+
 - JSONPlaceholder API
 
 ---
 
-## 📁 Folder Structure
+# 📁 Folder Structure
 
+```bash
 app/
 ├── dashboard/
-│ ├── page.tsx
-│ └── users/
-│ └── page.tsx
+│   ├── page.tsx
+│   ├── ai-insights/
+│   │   └── page.tsx
+│   └── users/
+│       └── page.tsx
+│
+├── login/
+│   └── page.tsx
+│
 ├── components/
-│ ├── Sidebar.tsx
-│ ├── UserTable.tsx
-│ └── AddUserForm.tsx
-├── hooks/
-│ └── useUsers.ts
-├── validations/
-│ └── userSchema.ts
+│   ├── Header.tsx
+│   ├── Sidebar.tsx
+│   ├── UserChart.tsx
+│   ├── UserTable.tsx
+│   └── AddUserForm.tsx
+│
+components/
+│   ├── ui/
+│   │   └── button.tsx
+│   │
+│   ├── stats-card.tsx
+│   ├── chart-card.tsx
+│   └── activity-feed.tsx
+│
+hooks/
+├── useUsers.ts
+├── useDebounce.ts
+│
+services/
+└── api.ts
+│
+validations/
+└── userSchema.ts
+```
 
 ---
 
-## ⚙️ Getting Started
+# ⚙️ Getting Started
 
-1. Clone the repo
-   git clone https://github.com/prasadmokshith/nextjs-admin-dashboard.git
-   cd nextjs-admin-dashboard
+## 1. Clone Repository
 
-2. Install dependencies
-   npm install
+```bash
+git clone https://github.com/prasadmokshith/nextjs-admin-dashboard.git
 
-3. Run the app
-   npm run dev
-
-Open http://localhost:3000
+cd nextjs-admin-dashboard
+```
 
 ---
 
-## 🔐 Authentication Logic
+## 2. Install Dependencies
 
-- Role is stored in cookies
-- Admin → can access Users page
-- User → restricted access
+```bash
+npm install
+```
 
 ---
 
-## 📦 API Integration
+## 3. Run Development Server
+
+```bash
+npm run dev
+```
+
+Open:
+
+```bash
+http://localhost:3000
+```
+
+---
+
+# 🔐 Authentication Logic
+
+Authentication is implemented using browser cookies.
+
+## Admin Login
+
+```txt
+admin@gmail.com
+```
+
+### Permissions
+
+- Dashboard Access
+- Users Management Access
+- AI Insights Dashboard Access
+
+---
+
+## User Login
+
+```txt
+user@gmail.com
+```
+
+### Permissions
+
+- Dashboard Access
+- Restricted Admin Features
+
+---
+
+# 📦 API Integration
 
 Using:
+
+```bash
 https://jsonplaceholder.typicode.com/users
+```
 
-Handled with React Query (`useQuery`)
+Handled with:
 
----
-
-## 🧪 Validation
-
-Form validation is implemented using Zod
+- React Query (`useQuery`)
+- Custom reusable hooks
 
 Example:
-userSchema.safeParse({ name, email });
+
+```ts
+export const useUsers = () => {
+  return useQuery<User[]>({
+    queryKey: ["users"],
+    queryFn: fetchUsers,
+  });
+};
+```
 
 ---
 
-## 🚀 Deployment
+# 🧪 Validation
 
-Deployed using Vercel
+Form validation implemented using Zod.
 
-Steps:
+Example:
+
+```ts
+userSchema.safeParse({ name, email });
+```
+
+---
+
+# 🌙 Dark Theme Support
+
+Implemented theme synchronization between:
+
+- Material UI Theme Provider
+- Tailwind CSS Dark Mode
+- shadcn/ui Components
+
+A single toggle controls both MUI-based pages and AI-generated Tailwind/shadcn pages.
+
+---
+
+# 🚀 AI Integration Architecture
+
+This project demonstrates incremental AI adoption in an existing enterprise-style application.
+
+### Existing Architecture
+
+- MUI-based dashboard application
+- React Query for server-state management
+- Modular reusable component structure
+
+### AI Integration
+
+- Added new AI Insights module using Vercel v0
+- Integrated Tailwind + shadcn/ui alongside existing MUI setup
+- Preserved existing application architecture and business logic
+- Reused existing authentication, layout, and theme systems
+
+---
+
+# 🚀 Deployment
+
+Deployed using Vercel.
+
+## Steps
 
 1. Push code to GitHub
-2. Import repo in Vercel
-3. Click Deploy
+2. Import repository into Vercel
+3. Configure environment (if needed)
+4. Deploy
 
 ---
 
-## 📌 Future Improvements
+# 📌 Future Improvements
 
 - Edit / Delete Users
-- Proper JWT Authentication
-- Charts & Analytics
-- Dark Mode
-- Pagination & Filtering
+- JWT Authentication
+- Role-based Protected Routes
+- Real Backend Integration
+- AI Chat Assistant
+- Export Dashboard Reports
+- Advanced Analytics
+- Unit & Integration Tests
 
 ---
 
-## 🙌 Author
+# 🙌 Author
 
-Prasad S
+## Prasad S
 
-GitHub: https://github.com/prasadmokshith
-LinkedIn: (Add your profile)
+GitHub:
+https://github.com/prasadmokshith
+
+LinkedIn:
+(Add your LinkedIn profile)
 
 ---
 
-## ⭐ If you like this project
+# ⭐ Support
 
-Give it a star on GitHub ⭐
+If you like this project, give it a star on GitHub ⭐
