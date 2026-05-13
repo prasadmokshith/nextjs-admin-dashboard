@@ -334,7 +334,7 @@ Deployed using Vercel.
 
 # 🙌 Author
 
-## Prasad S
+## Prasad Sunkesula
 
 GitHub:
 https://github.com/prasadmokshith
